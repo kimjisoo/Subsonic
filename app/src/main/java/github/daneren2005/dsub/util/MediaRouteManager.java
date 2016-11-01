@@ -49,26 +49,9 @@ public class MediaRouteManager extends MediaRouter.Callback {
 	private List<MediaRouteProvider> providers = new ArrayList<MediaRouteProvider>();
 	private List<MediaRouteProvider> onlineProviders = new ArrayList<MediaRouteProvider>();
 
-	static {
-		try {
-			CastCompat.checkAvailable();
-			castAvailable = true;
-		} catch(Throwable t) {
-			castAvailable = false;
-		}
-	}
-
 	public MediaRouteManager(DownloadService downloadService) {
 		this.downloadService = downloadService;
 		router = MediaRouter.getInstance(downloadService);
-
-		// Check if play services is available
-		int result = GooglePlayServicesUtil.isGooglePlayServicesAvailable(downloadService);
-		if(result != ConnectionResult.SUCCESS){
-			Log.w(TAG, "No play services, failed with result: " + result);
-			castAvailable = false;
-		}
-
 		addProviders();
 		buildSelector();
 	}
