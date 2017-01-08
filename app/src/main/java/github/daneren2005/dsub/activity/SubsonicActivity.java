@@ -95,7 +95,8 @@ public class SubsonicActivity extends AppCompatActivity implements OnItemSelecte
 	protected static boolean actionbarColored;
 	private static final int MENU_GROUP_SERVER = 10;
 	private static final int MENU_ITEM_SERVER_BASE = 100;
-	private static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1;
+	public static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1;
+	public static final int PERMISSIONS_REQUEST_LOCATION = 2;
 
 	private final List<Runnable> afterServiceAvailable = new ArrayList<>();
 	private boolean drawerIdle = true;
@@ -236,8 +237,8 @@ public class SubsonicActivity extends AppCompatActivity implements OnItemSelecte
 	}
 
 	@Override
-	protected void onResume() {
-		super.onResume();
+	protected void onStart() {
+		super.onStart();
 		Util.registerMediaButtonEventReceiver(this);
 
 		// Make sure to update theme
@@ -245,7 +246,8 @@ public class SubsonicActivity extends AppCompatActivity implements OnItemSelecte
 		if (theme != null && !theme.equals(ThemeUtil.getTheme(this)) || fullScreen != prefs.getBoolean(Constants.PREFERENCES_KEY_FULL_SCREEN, false) || actionbarColored != prefs.getBoolean(Constants.PREFERENCES_KEY_COLOR_ACTION_BAR, true)) {
 			restart();
 			overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-			DrawableTint.wipeTintCache();
+			DrawableTint.clearCache();
+			return;
 		}
 
 		populateTabs();
@@ -254,8 +256,8 @@ public class SubsonicActivity extends AppCompatActivity implements OnItemSelecte
 	}
 
 	@Override
-	protected void onPause() {
-		super.onPause();
+	protected void onStop() {
+		super.onStop();
 
 		UpdateView.removeActiveActivity();
 	}
