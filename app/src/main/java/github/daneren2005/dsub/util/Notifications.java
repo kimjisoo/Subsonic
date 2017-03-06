@@ -172,31 +172,31 @@ public final class Notifications {
 		boolean persistent = Util.getPreferences(context).getBoolean(Constants.PREFERENCES_KEY_PERSISTENT_NOTIFICATION, false);
 		if(persistent) {
 			if(expanded) {
-				rv.setImageViewResource(R.id.control_pause, playing ? R.drawable.notification_pause : R.drawable.notification_start);
+				rv.setImageViewResource(R.id.control_pause, playing ? android.R.drawable.ic_media_pause : android.R.drawable.ic_media_play);
 
 				if(isLongFile && playing) {
-					rv.setImageViewResource(R.id.control_previous, R.drawable.notification_rewind);
-					rv.setImageViewResource(R.id.control_next, R.drawable.notification_fastforward);
+					rv.setImageViewResource(R.id.control_previous, android.R.drawable.ic_media_rew);
+					rv.setImageViewResource(R.id.control_next, android.R.drawable.ic_media_ff);
 				} else {
-					rv.setImageViewResource(R.id.control_previous, R.drawable.notification_backward);
-					rv.setImageViewResource(R.id.control_next, R.drawable.notification_forward);
+					rv.setImageViewResource(R.id.control_previous, android.R.drawable.ic_media_rew);
+					rv.setImageViewResource(R.id.control_next, android.R.drawable.ic_media_ff);
 				}
 			} else {
-				rv.setImageViewResource(R.id.control_previous, playing ? R.drawable.notification_pause : R.drawable.notification_start);
+				rv.setImageViewResource(R.id.control_previous, playing ? android.R.drawable.ic_media_pause : android.R.drawable.ic_media_play);
 				if(isLongFile && playing) {
-					rv.setImageViewResource(R.id.control_pause, R.drawable.notification_fastforward);
+					rv.setImageViewResource(R.id.control_pause, android.R.drawable.ic_media_ff);
 				} else {
-					rv.setImageViewResource(R.id.control_pause, R.drawable.notification_forward);
+					rv.setImageViewResource(R.id.control_pause, android.R.drawable.ic_media_ff);
 				}
-				rv.setImageViewResource(R.id.control_next, R.drawable.notification_close);
+				rv.setImageViewResource(R.id.control_next, android.R.drawable.ic_menu_close_clear_cancel);
 			}
 		} else if(isLongFile) {
-			rv.setImageViewResource(R.id.control_previous, R.drawable.notification_rewind);
-			rv.setImageViewResource(R.id.control_next, R.drawable.notification_fastforward);
+			rv.setImageViewResource(R.id.control_previous, android.R.drawable.ic_media_rew);
+			rv.setImageViewResource(R.id.control_next, android.R.drawable.ic_media_ff);
 		} else {
 			// Necessary for switching back since it appears to re-use the same layout
-			rv.setImageViewResource(R.id.control_previous, R.drawable.notification_backward);
-			rv.setImageViewResource(R.id.control_next, R.drawable.notification_forward);
+			rv.setImageViewResource(R.id.control_previous, android.R.drawable.ic_media_rew);
+			rv.setImageViewResource(R.id.control_next, android.R.drawable.ic_media_ff);
 		}
 
 		// Create actions for media buttons
