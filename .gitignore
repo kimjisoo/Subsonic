@@ -14,5 +14,4 @@ proguard_logs/
 /build/
 local.properties
 *Thumbs.dbgradlew
-ServerProxy/*
 gradlew
