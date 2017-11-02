@@ -6,9 +6,9 @@ android {
 
 	defaultConfig {
 		applicationId "github.daneren2005.dsub"
-		minSdkVersion 14
+		minSdkVersion 23
 		targetSdkVersion 23
-		versionCode 191
+		versionCode 192
 		versionName '5.3.3'
 		setProperty("archivesBaseName", "DSub $versionName")
 		resConfigs "de", "es", "fr", "hu", "nl", "pt-rPT", "ru", "sv"
@@ -18,13 +18,13 @@ android {
 			minifyEnabled true
 			shrinkResources true
 			proguardFiles 'proguard.cfg'
-			zipAlignEnabled true
+			zipAlignEnabled false
 		}
 		fix {
 			minifyEnabled true
 			shrinkResources true
 			proguardFiles 'proguard.cfg'
-			zipAlignEnabled true
+			zipAlignEnabled false
 		}
 	}
 
@@ -34,12 +34,6 @@ android {
 
 	lintOptions {
 		checkReleaseBuilds false
-	}
-
-	signingConfigs {
-		debug {
-			storeFile file('../debug.keystore')
-		}
 	}
 }
 
